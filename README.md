@@ -1,8 +1,10 @@
 ## Getting Started
 
-First run the backend server from the given repository, that server will be run on `http://localhost:3001`
+1 First run the backend server from the given repository, that server will be run on `http://localhost:3001`
 
-First, run the development server:
+2 Install the front-end dependencies using command `yarn`
+
+3  First, run the development server:
 
 ```bash
 npm run dev

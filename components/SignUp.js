@@ -86,15 +86,29 @@ let SignUpComponent =({userDetail={},handleSingleEdit, isLoggedin})=>{
         }
         else{
 
+            //validate username, email id
+
+            let userNameRegex = new RegExp(/^[a-zA-Z0-9]+$/);
+            let emailIdRegex = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+
+            let username=userNameRef.current.value
+            let email= emailRef.current.value
+
+            if(!userNameRegex.test(username)){
+                return toast(`Invalid user name must contain alphanumeric !`)
+            }
+            if(!emailIdRegex.test(email)){
+                return toast(`Invalid Email id!`)
+            }
+
             if(pwdRef.current.value!==cpwdRef.current.value){
-                return alert(`Invalid confirm password!`)
+                return toast(`password & confirm password are mismatch!`)
             }
 
             //Register new user detail
             axios.post(`http://localhost:3001/users/save`,{
                 name:nameRef.current.value,
-                username:userNameRef.current.value,
-                email:emailRef.current.value,
+                username,email,
                 password:pwdRef.current.value,
             } , options)
                 .then(res => {
@@ -104,13 +118,13 @@ let SignUpComponent =({userDetail={},handleSingleEdit, isLoggedin})=>{
                     handleSingleEdit(userData)
 
                     Router.push('/signin')
-                })
 
-            nameRef.current.value = ""
-            userNameRef.current.value = ""
-            emailRef.current.value = ""
-            pwdRef.current.value = ""
-            cpwdRef.current.value = ""
+                    // nameRef.current.value = ""
+                    // userNameRef.current.value = ""
+                    // emailRef.current.value = ""
+                    // pwdRef.current.value = ""
+                    // cpwdRef.current.value = ""
+                })
         }
 
 

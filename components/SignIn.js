@@ -54,7 +54,7 @@ let SignInComponent =({setLoginStatus, isLoggedin})=>{
 
                     <div className="col-md-12">
                         <label htmlFor="password_text" className="form-label">Password</label>
-                        <input id={'password_text'} className="form-control" placeholder={"Enter Password"} ref={passwordRef} required/>
+                        <input id={'password_text'} type="password" className="form-control" placeholder={"Enter Password"} ref={passwordRef} required/>
                     </div>
 
                     <br/>

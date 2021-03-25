@@ -26,7 +26,7 @@ export const store = createStore((state={userlist:[], isLoggedin:false},action)=
             usersList.splice(usersList.findIndex(u=>u['_id']===action.id),1)
             return {
                 ...state,
-                userlist:[...userlist]
+                userlist:[...usersList]
             }
             break;
         default:

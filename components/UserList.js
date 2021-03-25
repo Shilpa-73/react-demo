@@ -43,10 +43,16 @@ let UserListComponent =({items,handleAdd,handleRemove})=>{
         })
     }
 
+    let handleLogoutFn = ()=>{
+        localStorage.removeItem('token');
+        Router.push('/signin')
+    }
+
     return (
         <Fragment>
             {/*Display the List*/}
 
+            <button type={'button'} className="btn-success" onClick={(e)=>{ handleLogoutFn(e)}}>Logout</button>
             {
                 items.length ?
                     (
